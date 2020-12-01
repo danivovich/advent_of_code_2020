@@ -9,13 +9,11 @@ numbers =
   end)
 
 Enum.each(numbers, fn one ->
-  Enum.each(numbers, fn two ->
-    case one + two do
-      2020 ->
-        IO.inspect(one * two)
+  case Enum.find(numbers, fn two -> one + two == 2020 end) do
+    nil ->
+      nil
 
-      _ ->
-        nil
-    end
-  end)
+    two ->
+      IO.inspect(one * two)
+  end
 end)
